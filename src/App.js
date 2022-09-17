@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import Listings from "./pages/Listings";
+import ListingDetail from "./pages/ListingDetail";
+import Blog from "./pages/Blog";
+import NotFound from "./pages/NotFound";
+import MainHeader from "./components/Layout/MainHeader";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <MainHeader />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="home" />
+          </Route>
+          <Route path="/home">
+            <HomePage />
+          </Route>
+          <Route path="/listings" exact>
+            <Listings />
+          </Route>
+          <Route path="/listings/:listingId">
+            <ListingDetail />
+          </Route>
+          <Route path="/blog">
+            <Blog />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </main>
+    </Fragment>
   );
 }
 
