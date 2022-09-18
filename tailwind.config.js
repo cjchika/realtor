@@ -4,7 +4,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      sm: "480px",
+      sm: "380px",
       md: "768px",
       lg: "976px",
       xl: "1200px",
@@ -17,7 +17,7 @@ module.exports = {
       blue: "#3A76DA",
       liteBlue: "#8bace2",
       silver: "#f0f3f7",
-      ash: "#1f1d1d",
+      ash: "#666565",
     },
     extend: {
       fontFamily: {
