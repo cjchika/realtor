@@ -35,7 +35,8 @@ const MainHeader = () => {
           </NavLink>
         </li>
       </ul>
-      <div className="py-3">
+      <div className="flex justify-between py-3 pl-6">
+        <button className="text-blue font-medium text-base pr-5">Login</button>
         <button className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md ">
           Get Started
         </button>
@@ -78,6 +79,9 @@ const MainHeader = () => {
           </li>
         </ul>
         <div className="pl-18 hidden lg:flex ">
+          <button className="text-blue font-medium text-base pr-5">
+            Login
+          </button>
           <button className=" bg-blue text-white font-bold text-xs p-3 px-5 hover:text-blue hover:bg-white hover:outline hover:outline-blue rounded-lg shadow-md ">
             Get Started
           </button>

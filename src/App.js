@@ -6,6 +6,8 @@ import Listings from "./pages/Listings";
 import ListingDetail from "./pages/ListingDetail";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 import MainHeader from "./components/Layout/MainHeader";
 
 function App() {
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/blog">
             <Blog />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="*">
             <NotFound />
