@@ -6,7 +6,7 @@ import HeroForm from "../Forms/HeroForm";
 
 const Hero = () => {
   return (
-    <section className="mb-20 mt-16 w-full bg-silver h-screen lg:pt-6">
+    <section className="mt-16 w-full bg-silver h-auto pb-10 lg:pt-6">
       <div className="lg:flex lg:justify-between px-10">
         <div className="lg:px-16 pt-20 lg:pr-0 lg:w-1/2">
           <h2 className="font-Poppins text-3xl font-semibold mb-4 ">
