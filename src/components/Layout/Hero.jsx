@@ -20,10 +20,10 @@ const Hero = () => {
             blanditiis amet laborum cumque sequi consequatur?
           </p>
           <div className="flex items-center mb-10">
-            <button className=" bg-blue text-white font-bold text-xs p-3 px-7 rounded-lg mr-6">
+            <button className=" bg-blue text-white font-bold text-xs p-3 px-7 rounded-lg mr-6 shadow-lg">
               Learn More
             </button>
-            <button className=" bg-blue text-white font-bold text-xs p-3  rounded-full ">
+            <button className=" bg-blue text-white font-bold text-xs p-3  rounded-full shadow-lg">
               <BsFillPlayFill className="text-lg" />
             </button>
           </div>
