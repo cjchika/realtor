@@ -3,15 +3,15 @@ import { BiSearchAlt } from "react-icons/bi";
 
 const HeroForm = () => {
   return (
-    <div className=" mt-20 w-auto lg:max-w-3xl rounded-lg bg-white shadow-md p-6 px-10 ">
-      <h1 className="mb-4 text-blue font-Poppins font-bold tracking-wider text-lg">
+    <div className="mx-auto w-11/12 md:w-9/12 lg:w-6/12 mt-20 rounded-lg bg-white shadow-md p-6 px-4 ">
+      {/* <h1 className="mb-4 text-blue font-Poppins font-bold tracking-wider text-lg">
         Search for available properties
-      </h1>
-      <form className="flex items-center justify-between">
+      </h1> */}
+      <form className="flex justify-between">
         <div className="flex flex-col">
           <label
             htmlFor="location"
-            className=" font-Poppins text-blue font-medium"
+            className=" font-Poppins text-blue font-xs lg:font-medium"
           >
             Location
           </label>
@@ -22,7 +22,7 @@ const HeroForm = () => {
           >
             <option>Texas</option>
             <option>Berlin</option>
-            <option>UAE</option>
+            <option>Dubai</option>
             <option>Lagos</option>
           </select>
         </div>
@@ -30,7 +30,7 @@ const HeroForm = () => {
         <div className="flex flex-col">
           <label
             htmlFor="property"
-            className="font-Poppins text-blue font-medium"
+            className="font-Poppins text-blue font-xs lg:font-medium"
           >
             Property Type
           </label>
@@ -46,7 +46,10 @@ const HeroForm = () => {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="price" className="font-Poppins text-blue font-medium">
+          <label
+            htmlFor="price"
+            className="font-Poppins text-blue font-xs lg:font-medium"
+          >
             Max Price
           </label>
           <select
@@ -62,7 +65,7 @@ const HeroForm = () => {
 
         <button
           type="submit"
-          className="flex items-center bg-blue text-white font-bold text-md p-2 px-4 rounded-lg ml-6 shadow-md"
+          className="flex items-center bg-blue text-white font-bold text-md p-2 px-4 rounded-lg  shadow-md"
         >
           {" "}
           <BiSearchAlt className="mr-2" />
