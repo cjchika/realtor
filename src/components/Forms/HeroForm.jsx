@@ -4,9 +4,9 @@ import { BiSearchAlt } from "react-icons/bi";
 const HeroForm = () => {
   return (
     <div className=" mx-auto w-11/12 md:w-9/12 lg:w-6/12 mt-20 rounded-lg bg-white shadow-md p-6 px-4 ">
-      {/* <h1 className="mb-4 text-blue font-Poppins font-bold tracking-wider text-lg">
+      <h1 className="mb-3 pl-4 md:pl-0 text-ash font-Poppins font-medium tracking-wider text-lg">
         Search for available properties
-      </h1> */}
+      </h1>
       <form>
         <div className="flex flex-col px-4 md:px-0 md:flex-row justify-between">
           <div className="flex flex-col pb-2 md:pb-0">

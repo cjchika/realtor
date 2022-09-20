@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { CgClose } from "react-icons/cg";
@@ -36,9 +36,11 @@ const MainHeader = () => {
         </li>
       </ul>
       <div className="flex justify-between py-3 pl-6">
-        <button className="text-blue font-medium text-base pr-5">Login</button>
+        <button className="text-blue font-medium text-base pr-5">
+          <Link to="/login">Login</Link>
+        </button>
         <button className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md ">
-          Get Started
+          <Link to="/signup">Get Started</Link>
         </button>
       </div>
     </div>
@@ -80,10 +82,10 @@ const MainHeader = () => {
         </ul>
         <div className="pl-18 hidden lg:flex ">
           <button className="text-blue font-medium text-base pr-5">
-            Login
+            <Link to="/login">Login</Link>
           </button>
           <button className=" bg-blue text-white font-bold text-xs p-3 px-5 hover:text-blue hover:bg-white hover:outline hover:outline-blue rounded-lg shadow-md ">
-            Get Started
+            <Link to="/signup">Get Started</Link>
           </button>
         </div>
         <div className="lg:hidden">
