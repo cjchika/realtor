@@ -64,7 +64,7 @@ const Properties = () => {
     <Fragment>
       <section className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16">
         <div className="px-auto lg:px-32">
-          <h1 className="font-Poppins font-bold text-3xl text-center tracking-wider mb-4">
+          <h1 className="font-Poppins font-bold text-4xl text-center tracking-wider mb-4">
             List of <span className="text-blue">Properties</span>
           </h1>
         </div>

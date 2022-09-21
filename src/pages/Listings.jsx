@@ -1,10 +1,10 @@
 import React from "react";
-import PropertyList from "../components/Data/PropertyList";
+import PropertyListing from "../components/Layout/PropertyListing";
 
 const Listings = () => {
   return (
-    <div className="mt-20">
-      <PropertyList />
+    <div className="mt-16">
+      <PropertyListing />
     </div>
   );
 };

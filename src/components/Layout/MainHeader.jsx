@@ -84,7 +84,7 @@ const MainHeader = () => {
           <button className="text-blue font-medium text-base pr-5">
             <Link to="/login">Login</Link>
           </button>
-          <button className=" bg-blue text-white font-bold text-xs p-3 px-5 hover:text-blue hover:bg-white hover:outline hover:outline-blue rounded-lg shadow-md ">
+          <button className=" bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
             <Link to="/signup">Get Started</Link>
           </button>
         </div>
