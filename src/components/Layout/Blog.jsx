@@ -1,5 +1,36 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import Blog1 from "../../assets/Blog1.jpg";
+import Blog2 from "../../assets/Blog2.jpg";
+import Blog3 from "../../assets/Blog3.jpg";
+import Blog4 from "../../assets/Blog4.jpg";
+
+const blogData = [
+  {
+    id: "b1",
+    price: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    date: "2 May 2022",
+    image: Blog1,
+  },
+  {
+    id: "b2",
+    price: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    date: "15 June 2022",
+    image: Blog2,
+  },
+  {
+    id: "b3",
+    price: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    date: "30 June 2022",
+    image: Blog3,
+  },
+  {
+    id: "b4",
+    price: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    date: "20 July 2022",
+    image: Blog4,
+  },
+];
 
 const Blog = () => {
   return (
