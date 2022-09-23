@@ -8,7 +8,7 @@ const OurService = () => {
     <Fragment>
       <section className="mx-auto bg-silverLite px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          <div className="px-auto lg:px-10 lg:mr-6 md:pl-0">
+          <div className="px-auto lg:px-10 lg:mr-6 md:pl-0 lg:pl-0">
             <img className="w-full h-1/2" src={OurServiceImage} alt="Scraper" />
           </div>
           <div className="mt-10 lg:mt-0 lg:mx-10">
