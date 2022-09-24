@@ -25,7 +25,10 @@ function App() {
         <Route path="/listings/:listingId">
           <ListingDetail />
         </Route>
-        <Route path="/blog">
+        <Route path="/blog" exact>
+          <Blog />
+        </Route>
+        <Route path="/blog/:blogId">
           <Blog />
         </Route>
         <Route path="/signup">
