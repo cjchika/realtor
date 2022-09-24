@@ -4,6 +4,7 @@ import Purpose from "../components/Layout/Purpose";
 import Properties from "../components/Layout/Properties";
 import OurService from "../components/Layout/OurService";
 import Blog from "../components/Layout/BlogSection";
+import Testimonial from "../components/Layout/Testimonial";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Properties />
       <OurService />
       <Blog />
+      <Testimonial />
     </Fragment>
   );
 };

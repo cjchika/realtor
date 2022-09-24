@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="w-full lg:w-9/12 xl:w-full lg:px-16 lg:pl-0 lg:pt-20">
-          <img src={HeroImage} alt="Hero" className="w-auto h-auto" />
+          <img src={HeroImage} alt="Hero" className="w-auto h-auto " />
         </div>
       </div>
       <HeroForm />

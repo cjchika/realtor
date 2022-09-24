@@ -51,7 +51,7 @@ const MainHeader = () => {
       <nav className="flex justify-end lg:flex items-center justify-between px-6  font-Poppins">
         <div className="flex  items-center ">
           <div className="w-28 ">
-            <img src={Logo} alt="macho-logo" className="w-full " />
+            <img src={Logo} alt="macho-logo" className="w-full" />
           </div>
         </div>
         <ul className=" hidden lg:flex px-6 text-ash  ">
