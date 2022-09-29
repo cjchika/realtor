@@ -5,6 +5,7 @@ import Properties from "../components/Layout/Properties";
 import OurService from "../components/Layout/OurService";
 import Blog from "../components/Layout/BlogSection";
 import Testimonial from "../components/Layout/Testimonial";
+import FAQs from "../components/Layout/FAQs";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <OurService />
       <Blog />
       <Testimonial />
+      <FAQs />
     </Fragment>
   );
 };
