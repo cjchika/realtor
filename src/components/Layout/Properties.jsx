@@ -63,6 +63,7 @@ const Properties = () => {
         address={property?.title}
         image={property?.coverPhoto?.url}
         state={property?.state}
+        rentType={property?.rentFrequency}
       />
     );
   });
@@ -79,7 +80,7 @@ const Properties = () => {
             facilis libero, esse recusandae nam veniam aut accusamus.
           </p>
         </div>
-        <ul className="flex justify-center flex-col lg:flex-row lg:gap-2 lg:justify-between ">
+        <ul className="flex justify-center flex-col lg:flex-row lg:justify-between ">
           {isFetching && <Loader />}
           {!isFetching && !error && mappedList}
           {!isFetching && mappedList.length === 0 && <Error />}

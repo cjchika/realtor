@@ -15,6 +15,7 @@ const PropertiesItem = ({
   image,
   size,
   state,
+  rentType,
 }) => {
   const shortSize = size.toFixed(2);
 
@@ -37,7 +38,9 @@ const PropertiesItem = ({
               <div className="mr-1">
                 <HiOutlineLocationMarker className="font-Poppins  text-ash" />
               </div>
-              <h1 className="font-Poppins text-xs text-ash ">{address}</h1>
+              <h1 className="font-Poppins text-xs text-ash truncate">
+                {address}
+              </h1>
             </div>
           </div>
           <div className="flex justify-between px-4 mb-3">
@@ -60,7 +63,12 @@ const PropertiesItem = ({
                 Book Now
               </button>
             </Link>
-            <h1 className="font-Poppins text-md text-blue font-semibold pl-1 py-1">{`$${price}`}</h1>
+            <h1 className="font-Poppins text-md text-blue font-semibold pl-1 py-1">
+              {`$${price}`}
+              <span className="font-Poppins text-liteBlue text-xs">
+                /{rentType}
+              </span>
+            </h1>
           </div>
         </div>
       </li>

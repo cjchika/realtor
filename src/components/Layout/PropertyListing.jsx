@@ -65,6 +65,7 @@ const Properties = () => {
         address={property?.title}
         image={property?.coverPhoto?.url}
         state={property?.state}
+        rentType={property?.rentFrequency}
       />
     );
   });
@@ -78,7 +79,7 @@ const Properties = () => {
           </h1>
         </div>
         <div>
-          <ul className="flex justify-between flex-wrap ">
+          <ul className="flex justify-center flex-wrap ">
             {isFetching && <Loader />}
             {!isFetching && !error && mappedList}
             {!isFetching && mappedList.length === 0 && <Error />}
