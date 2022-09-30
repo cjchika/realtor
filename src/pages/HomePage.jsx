@@ -6,6 +6,7 @@ import OurService from "../components/Layout/OurService";
 import Blog from "../components/Layout/BlogSection";
 import Testimonial from "../components/Layout/Testimonial";
 import FAQs from "../components/Layout/FAQs";
+import Footer from "../components/Layout/Footer";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       <Blog />
       <Testimonial />
       <FAQs />
+      <Footer />
     </Fragment>
   );
 };

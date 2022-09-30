@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import NotFoundImage from "../../assets/NotFound.svg";
+import Footer from "./Footer";
 
 const NotFound = () => {
   return (
@@ -13,6 +14,7 @@ const NotFound = () => {
           />
         </div>
       </section>
+      <Footer />
     </Fragment>
   );
 };
