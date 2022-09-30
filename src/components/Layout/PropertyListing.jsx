@@ -1,61 +1,70 @@
 import React, { Fragment } from "react";
 import PropertiesItem from "../Data/PropertiesItem";
-import Property1 from "../../assets/Property1.jpg";
-import Property3 from "../../assets/Property3.jpg";
-import Property4 from "../../assets/Property4.jpg";
-import Property5 from "../../assets/Property5.jpg";
+// import Property1 from "../../assets/Property1.jpg";
+// import Property3 from "../../assets/Property3.jpg";
+// import Property4 from "../../assets/Property4.jpg";
+// import Property5 from "../../assets/Property5.jpg";
+
+import { useGetProperyListQuery } from "../../redux/services/bayut";
+import Loader from "../UI/Loader";
+import Error from "../UI/Error";
 
 const Properties = () => {
-  const propertiesData = [
-    {
-      id: "p1",
-      numOfBed: 4,
-      numOfBath: 2,
-      size: 1500,
-      price: "100,000",
-      address: "2601 West 7th St. Fort Worth, Texas",
-      image: Property1,
-    },
-    {
-      id: "p2",
-      numOfBed: 2,
-      numOfBath: 2,
-      size: 2000,
-      price: "150,000",
-      address: "2601 West 7th St. Fort Worth, Texas",
-      image: Property3,
-    },
-    {
-      id: "p3",
-      numOfBed: 3,
-      numOfBath: 4,
-      size: 2500,
-      price: "140,000",
-      address: "2601 West 7th St. Fort Worth, Texas",
-      image: Property4,
-    },
-    {
-      id: "p4",
-      numOfBed: 4,
-      numOfBath: 2,
-      size: 1800,
-      price: "230,000",
-      address: "2601 West 7th St. Fort Worth, Texas",
-      image: Property5,
-    },
-  ];
+  const { data, isFetching, error } = useGetProperyListQuery();
 
-  const mappedList = propertiesData.map((property) => {
+  const propertiesData = data?.hits;
+
+  // const propertiesData = [
+  //   {
+  //     id: "p1",
+  //     numOfBed: 4,
+  //     numOfBath: 2,
+  //     size: 1500,
+  //     price: "100,000",
+  //     address: "2601 West 7th St. Fort Worth, Texas",
+  //     image: Property1,
+  //   },
+  //   {
+  //     id: "p2",
+  //     numOfBed: 2,
+  //     numOfBath: 2,
+  //     size: 2000,
+  //     price: "150,000",
+  //     address: "2601 West 7th St. Fort Worth, Texas",
+  //     image: Property3,
+  //   },
+  //   {
+  //     id: "p3",
+  //     numOfBed: 3,
+  //     numOfBath: 4,
+  //     size: 2500,
+  //     price: "140,000",
+  //     address: "2601 West 7th St. Fort Worth, Texas",
+  //     image: Property4,
+  //   },
+  //   {
+  //     id: "p4",
+  //     numOfBed: 4,
+  //     numOfBath: 2,
+  //     size: 1800,
+  //     price: "230,000",
+  //     address: "2601 West 7th St. Fort Worth, Texas",
+  //     image: Property5,
+  //   },
+  // ];
+
+  const mappedList = propertiesData?.map((property) => {
     return (
       <PropertiesItem
-        key={property.id}
-        id={property.id}
-        numOfBed={property.numOfBed}
-        numOfBath={property.numOfBath}
-        size={property.size}
-        price={property.price}
-        address={property.address}
-        image={property.image}
+        key={property?.externalID}
+        id={property?.externalID}
+        numOfBed={property?.rooms}
+        numOfBath={property?.baths}
+        size={property?.area}
+        price={property?.price}
+        address={property?.title}
+        image={property?.coverPhoto?.url}
+        state={property?.state}
       />
     );
   });
@@ -68,9 +77,13 @@ const Properties = () => {
             List of <span className="text-blue">Properties</span>
           </h1>
         </div>
-        <ul className="flex justify-center flex-col lg:flex-row my-6">
-          {mappedList}
-        </ul>
+        <div>
+          <ul className="flex justify-between flex-wrap ">
+            {isFetching && <Loader />}
+            {!isFetching && !error && mappedList}
+            {!isFetching && mappedList.length === 0 && <Error />}
+          </ul>
+        </div>
       </section>
     </Fragment>
   );
