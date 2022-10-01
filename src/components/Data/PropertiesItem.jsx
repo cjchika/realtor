@@ -38,9 +38,11 @@ const PropertiesItem = ({
               <div className="mr-1">
                 <HiOutlineLocationMarker className="font-Poppins  text-ash" />
               </div>
-              <h1 className="font-Poppins text-xs text-ash truncate">
-                {address}
-              </h1>
+              <Link to={`/listings/${id}`} className="truncate">
+                <h1 className="font-Poppins text-xs text-ash truncate capitalize">
+                  {address}
+                </h1>
+              </Link>
             </div>
           </div>
           <div className="flex justify-between px-4 mb-3">
@@ -64,7 +66,7 @@ const PropertiesItem = ({
               </button>
             </Link>
             <h1 className="font-Poppins text-md text-blue font-semibold pl-1 py-1">
-              {`$${price}`}
+              {`AED ${price}`}
               <span className="font-Poppins text-liteBlue text-xs">
                 /{rentType}
               </span>

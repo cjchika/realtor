@@ -7,9 +7,9 @@ const Loader = ({ title }) => (
       alt="loader"
       className="w-52 h-52 object-contain text-blue "
     />
-    <h1 className="font-bold text-xl text-blue mt-2">
+    {/* <h1 className="font-bold text-xl text-blue mt-2">
       {title || "Fetching properties..."}
-    </h1>
+    </h1> */}
   </div>
 );
 

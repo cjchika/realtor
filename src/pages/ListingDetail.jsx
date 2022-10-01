@@ -1,17 +1,53 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Layout/Footer";
 import FAQs from "../components/Layout/FAQs";
+import PropertyDetailItems from "../components/Data/PropertyDetailItems";
+
+import Loader from "../components/UI/Loader";
+import Error from "../components/UI/Error";
+
+import { useGetProperyDetailsQuery } from "../redux/services/bayut";
 
 const ListingDetail = () => {
   const params = useParams();
   const { listingId } = params;
+  const divRef = useRef();
+
+  const { data, isFetching, error } = useGetProperyDetailsQuery(listingId);
+
+  console.log(data);
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  });
 
   return (
     <Fragment>
-      <section className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16">
+      <section
+        ref={divRef}
+        className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16"
+      >
         <div className="my-20">
-          <h1 className="text-5xl">ID: {listingId}</h1>
+          {!isFetching && !error && (
+            <PropertyDetailItems
+              key={data?.externalID}
+              id={data?.externalID}
+              numOfBed={data?.rooms}
+              numOfBath={data?.baths}
+              size={data?.area}
+              price={data?.price}
+              address={data?.title}
+              image={data?.coverPhoto?.url}
+              state={data?.state}
+              rentType={data?.rentFrequency}
+              description={data?.description}
+              amenities={data?.amenities}
+              photos={data?.photos}
+            />
+          )}
+          {isFetching && <Loader />}
+          {!isFetching && data.length === 0 && <Error />}
         </div>
       </section>
       <FAQs />
