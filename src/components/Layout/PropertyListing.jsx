@@ -79,7 +79,7 @@ const Properties = () => {
           </h1>
         </div>
         <div>
-          <ul className="flex justify-center flex-wrap ">
+          <ul className="flex justify-center flex-col lg:flex-row lg:flex-wrap ">
             {isFetching && <Loader />}
             {!isFetching && !error && mappedList}
             {!isFetching && mappedList.length === 0 && <Error />}
