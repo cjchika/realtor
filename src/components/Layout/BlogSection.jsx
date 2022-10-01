@@ -1,47 +1,23 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import BlogItems from "../Data/BlogItems";
-import Blog1 from "../../assets/Blog1.jpg";
-import Blog2 from "../../assets/Blog2.jpg";
-import Blog3 from "../../assets/Blog3.jpg";
-import Blog4 from "../../assets/Blog4.jpg";
+import Error from "../UI/Error";
+import Loader from "../UI/Loader";
 
-const blogData = [
-  {
-    id: "b1",
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "2 May 2022",
-    image: Blog1,
-  },
-  {
-    id: "b2",
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "15 June 2022",
-    image: Blog2,
-  },
-  {
-    id: "b3",
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "30 June 2022",
-    image: Blog3,
-  },
-  {
-    id: "b4",
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "20 July 2022",
-    image: Blog4,
-  },
-];
+import { useGetRealEstateNewsQuery } from "../../redux/services/newsCatcher";
 
 const Blog = () => {
-  const mappedList = blogData.map((blog) => {
+  const { data, isFetching, error } = useGetRealEstateNewsQuery();
+  const resData = data?.articles.slice(0, 4);
+
+  const mappedList = resData?.map((blog) => {
     return (
       <BlogItems
-        key={blog.id}
-        id={blog.id}
+        key={blog._id}
+        id={blog._id}
         title={blog.title}
-        date={blog.date}
-        image={blog.image}
+        date={blog.published_date}
+        url={blog.link}
       />
     );
   });
@@ -69,7 +45,9 @@ const Blog = () => {
           </div>
         </div>
         <ul className="flex justify-center flex-col lg:flex-row my-6">
-          {mappedList}
+          {isFetching && <Loader />}
+          {!isFetching && !error && mappedList}
+          {!isFetching && mappedList.length === 0 && <Error />}
         </ul>
       </section>
     </Fragment>
