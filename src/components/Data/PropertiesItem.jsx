@@ -59,7 +59,7 @@ const PropertiesItem = ({
               <p className="text-xs text-ash">{shortSize} sqft</p>
             </div>
           </div>
-          <div className="flex justify-between px-4 pb-3 mb-4">
+          <div className="flex flex-wrap justify-between  px-4 pb-3 mb-4">
             <Link to={`/listings/${id}`}>
               <button className=" bg-blue text-white font-bold text-xs px-4 py-2 rounded-lg shadow-lg">
                 Book Now
