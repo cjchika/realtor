@@ -15,31 +15,45 @@ const MainHeader = () => {
     <div className="w-11/12 max-w-2xl mt-4">
       <ul className=" flex-col px-6 text-ash  ">
         <li className="py-3">
-          <NavLink to="/home" activeClassName="text-blue">
+          <NavLink to="/home" activeClassName="text-blue" onClick={menuHandler}>
             Home
           </NavLink>
         </li>
         <li className="py-3">
-          <NavLink to="/listings" activeClassName="text-blue">
+          <NavLink
+            to="/listings"
+            activeClassName="text-blue"
+            onClick={menuHandler}
+          >
             Properties
           </NavLink>
         </li>
         <li className="py-3">
-          <NavLink to="/agent" activeClassName="text-blue">
+          <NavLink
+            to="/agent"
+            activeClassName="text-blue"
+            onClick={menuHandler}
+          >
             Agents
           </NavLink>
         </li>
         <li className="py-3">
-          <NavLink to="/blog" activeClassName="text-blue">
+          <NavLink to="/blog" activeClassName="text-blue" onClick={menuHandler}>
             Blog
           </NavLink>
         </li>
       </ul>
       <div className="flex justify-between py-3 pl-6">
-        <button className="text-blue font-medium text-base pr-5">
+        <button
+          className="text-blue font-medium text-base pr-5"
+          onClick={menuHandler}
+        >
           <Link to="/login">Login</Link>
         </button>
-        <button className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md ">
+        <button
+          className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
+          onClick={menuHandler}
+        >
           <Link to="/signup">Get Started</Link>
         </button>
       </div>

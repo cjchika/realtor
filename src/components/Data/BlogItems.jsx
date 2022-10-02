@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { FiClock } from "react-icons/fi";
-// import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BlogImage from "../../assets/Blog3.jpg";
 
 const BlogItem = ({ id, title, date, link }) => {
@@ -22,16 +22,16 @@ const BlogItem = ({ id, title, date, link }) => {
             <div className="flex  text-xs py-1 text-ash">
               <FiClock className="mr-2" /> <p>{date}</p>
             </div>
-            <h1 className="text-base truncate">{title}</h1>
+            <h1 className="text-base">{title}</h1>
           </div>
           <div className="pl-1 my-2">
-            {/* <Link to={`/blog/${id}`}> */}
-            {/* <a href={`${link}`}> */}
-            <button className="cursor-pointer bg-blue text-white font-bold text-xs px-3 py-2 rounded-lg shadow-lg">
-              Read More
-            </button>
-            {/* </a> */}
-            {/* </Link> */}
+            <Link to={`/blog/${id}`}>
+              {/* <a href={`${link}`}> */}
+              <button className="cursor-pointer bg-blue text-white font-bold text-xs px-3 py-2 rounded-lg shadow-lg">
+                Read More
+              </button>
+              {/* </a> */}
+            </Link>
           </div>
         </div>
       </li>

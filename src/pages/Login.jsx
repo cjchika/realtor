@@ -1,7 +1,12 @@
 import React from "react";
+import NotFound from "../components/Layout/NotFound";
 
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <>
+      <NotFound />
+    </>
+  );
 };
 
 export default Login;

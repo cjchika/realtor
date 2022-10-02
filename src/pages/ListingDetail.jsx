@@ -16,8 +16,6 @@ const ListingDetail = () => {
 
   const { data, isFetching, error } = useGetProperyDetailsQuery(listingId);
 
-  console.log(data);
-
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
   });
@@ -26,7 +24,7 @@ const ListingDetail = () => {
     <Fragment>
       <section
         ref={divRef}
-        className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16"
+        className="mx-auto bg-silver px-2 md:px-16 lg:px-20 py-20 pt-20 md:py-16"
       >
         <div className="my-20">
           {!isFetching && !error && (

@@ -26,7 +26,7 @@ const PropertyDetailItems = ({
 
   return (
     <Fragment>
-      <div className="w-auto m-2 flex flex-col bg-white rounded-3xl  shadow-md">
+      <div className="w-full lg:w-auto m-0 lg:m-2 flex flex-col bg-white rounded-3xl  shadow-md">
         <div>
           <div className="py-2 px-2">
             <div className="w-auto p-1 ">
