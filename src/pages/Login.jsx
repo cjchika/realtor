@@ -1,10 +1,14 @@
 import React from "react";
-import NotFound from "../components/Layout/NotFound";
+import LoginForm from "../components/Forms/LoginForm";
+import Footer from "../components/Layout/Footer";
 
 const Login = () => {
   return (
     <>
-      <NotFound />
+      <section className="mx-auto bg-silverLite pb-80">
+        <LoginForm />
+      </section>
+      <Footer />
     </>
   );
 };
