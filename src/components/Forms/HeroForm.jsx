@@ -2,12 +2,16 @@ import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
 
 const HeroForm = () => {
+  const handleSearch = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className=" mx-auto w-11/12 md:w-9/12 lg:w-6/12 mt-20 rounded-lg bg-white shadow-md p-6 px-4 ">
       <h1 className="mb-3 pl-4 md:pl-0 text-ash font-Poppins font-medium tracking-wider text-lg">
         Search for available properties
       </h1>
-      <form>
+      <form onSubmit={handleSearch}>
         <div className="flex flex-col px-4 md:px-0 md:flex-row justify-between">
           <div className="flex flex-col pb-2 md:pb-0">
             <label
