@@ -28,7 +28,7 @@ const SignupForm = () => {
                 Username <span className="text-[#dc2626]">*</span>
               </label>
               <input
-                className="bg-silverLite border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
+                className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="username"
                 type="username"
               />
@@ -38,7 +38,7 @@ const SignupForm = () => {
                 Email Address <span className="text-[#dc2626]">*</span>
               </label>
               <input
-                className="bg-silverLite border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
+                className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="email"
                 type="email"
               />
@@ -48,7 +48,7 @@ const SignupForm = () => {
                 Password <span className="text-[#dc2626]">*</span>
               </label>
               <input
-                className="bg-silverLite border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
+                className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="password"
                 type="password"
               />

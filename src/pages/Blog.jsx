@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import BlogPosts from "../components/Layout/BlogPosts";
 import FAQs from "../components/Layout/FAQs";
 import Footer from "../components/Layout/Footer";
 
 const Blog = () => {
+  const divRef = useRef();
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  });
+
   return (
-    <div className="mt-16">
+    <div ref={divRef} className="mt-16">
       <BlogPosts />
       <FAQs />
       <Footer />

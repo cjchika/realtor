@@ -12,7 +12,7 @@ const MainHeader = () => {
   };
 
   const mobileMenu = (
-    <div className="w-11/12 max-w-2xl mt-4">
+    <div className="w-11/12 max-w-2xl mt-4 lg:hidden">
       <ul className=" flex-col px-6 text-ash  ">
         <li className="py-3">
           <NavLink to="/home" activeClassName="text-blue" onClick={menuHandler}>
