@@ -1,8 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, useHistory } from "react-router-dom";
 import SignupImage from "../../assets/Signup.jpg";
+// import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { useSignupMutation } from "../../redux/services/firebase";
+import { login } from "../../redux/features/authSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const SignupForm = () => {
+  // const [show, setShow] = useState(false);
+  // const handleClick = () => setShow(!show);
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  const [signup, { isFetching, error }] = useSignupMutation();
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    const formData = {
+      email: enteredEmail,
+      password: enteredPassword,
+      returnSecureToken: true,
+    };
+
+    try {
+      const user = await signup(formData).unwrap();
+      dispatch(login(user.idToken));
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const content = isFetching ? "Sending Request..." : "Create Account";
+
   return (
     <>
       <div className="font-Poppins pt-40 flex justify-center lg:justify-between px-4 md:px-16 lg:px-20">
@@ -22,17 +58,7 @@ const SignupForm = () => {
             {" "}
             <p className="text-center text-sm">Error message</p>
           </div>
-          <form>
-            <div className="flex flex-col mb-5">
-              <label className="text-ash pb-2 text-lg" htmlFor="username">
-                Username <span className="text-[#dc2626]">*</span>
-              </label>
-              <input
-                className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
-                id="username"
-                type="username"
-              />
-            </div>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col mb-5">
               <label className="text-ash text-lg" htmlFor="email">
                 Email Address <span className="text-[#dc2626]">*</span>
@@ -41,20 +67,30 @@ const SignupForm = () => {
                 className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="email"
                 type="email"
+                ref={emailInputRef}
               />
             </div>
             <div className="flex flex-col mb-12">
               <label className="text-ash text-lg" htmlFor="password">
                 Password <span className="text-[#dc2626]">*</span>
               </label>
+
               <input
                 className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="password"
                 type="password"
+                ref={passwordInputRef}
               />
+              {/* <button
+                type="button"
+                className="text-2xl text-ash relative ml-[17rem] mt-[2.5rem]"
+                onClick={handleClick}
+              >
+                {show ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              </button> */}
             </div>
             <button className="bg-blue font-medium w-full text-white py-3 rounded-lg">
-              Create Account
+              {content}
             </button>
           </form>
         </div>
