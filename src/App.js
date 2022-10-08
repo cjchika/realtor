@@ -1,4 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import HomePage from "./pages/HomePage";
 import Listings from "./pages/Listings";
@@ -11,6 +12,8 @@ import Agent from "./pages/Agent";
 import Layout from "./components/Layout/Layout";
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
     <Layout>
       <Switch>
@@ -36,7 +39,8 @@ function App() {
           <Blog />
         </Route>
         <Route path="/signup">
-          <Signup />
+          {!isAuthenticated && <Signup />}
+          {isAuthenticated && <Redirect to="/" />}
         </Route>
         <Route path="/login">
           <Login />

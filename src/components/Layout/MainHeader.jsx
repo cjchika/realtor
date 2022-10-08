@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "../../assets/Logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { CgClose } from "react-icons/cg";
 
 const MainHeader = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const menuHandler = () => {
     setIsMobileMenu((isMobileMenu) => !isMobileMenu);
   };
+
+  // const btnContent = isAuthenticated ? 'Login' : 'Logout'
 
   const mobileMenu = (
     <div className="w-11/12 max-w-2xl mt-4 lg:hidden">
@@ -48,7 +52,8 @@ const MainHeader = () => {
           className="text-blue font-medium text-base pr-5"
           onClick={menuHandler}
         >
-          <Link to="/login">Login</Link>
+          {!isAuthenticated && <Link to="/login">Login</Link>}
+          {isAuthenticated && <Link to="/">Logout</Link>}
         </button>
         <button
           className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "

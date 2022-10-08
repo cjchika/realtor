@@ -1,23 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import SignupImage from "../../assets/Signup.jpg";
 // import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useSignupMutation } from "../../redux/services/firebase";
 import { login } from "../../redux/features/authSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SignupForm = () => {
   // const [show, setShow] = useState(false);
   // const handleClick = () => setShow(!show);
+  const [isLoading, setIsLoading] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
-  const [signup, { isFetching, error }] = useSignupMutation();
+  const history = useHistory();
+  const [signup] = useSignupMutation();
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -31,13 +33,15 @@ const SignupForm = () => {
     try {
       const user = await signup(formData).unwrap();
       dispatch(login(user.idToken));
+      history.replace("/");
       console.log(user);
     } catch (error) {
       console.log(error.message);
     }
+    setIsLoading(false);
   };
 
-  const content = isFetching ? "Sending Request..." : "Create Account";
+  const content = isLoading ? "Sending Request..." : "Create Account";
 
   return (
     <>
