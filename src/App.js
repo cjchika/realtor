@@ -43,7 +43,8 @@ function App() {
           {isAuthenticated && <Redirect to="/" />}
         </Route>
         <Route path="/login">
-          <Login />
+          {!isAuthenticated && <Login />}
+          {isAuthenticated && <Redirect to="/" />}
         </Route>
         <Route path="*">
           <NotFound />

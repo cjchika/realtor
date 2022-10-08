@@ -13,7 +13,7 @@ const MainHeader = () => {
     setIsMobileMenu((isMobileMenu) => !isMobileMenu);
   };
 
-  // const btnContent = isAuthenticated ? 'Login' : 'Logout'
+  const btnContent = isAuthenticated ? "Logout" : "Login";
 
   const mobileMenu = (
     <div className="w-11/12 max-w-2xl mt-4 lg:hidden">
@@ -52,8 +52,7 @@ const MainHeader = () => {
           className="text-blue font-medium text-base pr-5"
           onClick={menuHandler}
         >
-          {!isAuthenticated && <Link to="/login">Login</Link>}
-          {isAuthenticated && <Link to="/">Logout</Link>}
+          <Link to="/login">{btnContent}</Link>
         </button>
         <button
           className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
@@ -101,7 +100,7 @@ const MainHeader = () => {
         </ul>
         <div className="pl-18 hidden lg:flex ">
           <button className="text-blue font-medium text-base pr-5">
-            <Link to="/login">Login</Link>
+            <Link to="/login">{btnContent}</Link>
           </button>
           <button className=" bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
             <Link to="/signup">Get Started</Link>
