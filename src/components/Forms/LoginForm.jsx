@@ -1,8 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import LoginImage from "../../assets/Signup.jpg";
+import { useLogInMutation } from "../../redux/services/firebase";
+import { login, setActiveUser } from "../../redux/features/authSlice";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+  const history = useHistory();
+  const [logIn] = useLogInMutation();
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    const formData = {
+      email: enteredEmail,
+      password: enteredPassword,
+      returnSecureToken: true,
+    };
+
+    try {
+      const user = await logIn(formData).unwrap();
+      if (!user) {
+        throw new Error("Authentication Failed!");
+      }
+      dispatch(login(user.idToken));
+      dispatch(setActiveUser(user.email));
+      history.replace("/");
+      // console.log(user);
+    } catch (error) {
+      const { message } = error.data.error;
+      setErrorMessage(message);
+      console.log(message);
+    }
+    setIsLoading(false);
+  };
+
+  const content = isLoading ? "Logging in..." : "Log in";
+
   return (
     <>
       <div className="font-Poppins pt-40 flex justify-center lg:justify-between px-4 md:px-16 lg:px-20">
@@ -16,19 +60,22 @@ const LoginForm = () => {
               </Link>
             </p>
           </div>
-          <div className="text-black mb-8 text-sm p-4 bg-[#f7cfcf] border-[#dc2626] border rounded-lg">
-            {" "}
-            <p className="text-center text-sm">Error message</p>
-          </div>
-          <form>
+          {errorMessage && (
+            <div className="text-black mb-8 text-sm p-4 bg-[#f7cfcf] border-[#dc2626] border rounded-lg">
+              {" "}
+              <p className="text-center text-sm">{errorMessage}</p>
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col mb-5">
-              <label className="text-ash pb-2 text-lg" htmlFor="username">
-                Username or Email <span className="text-[#dc2626]">*</span>
+              <label className="text-ash pb-2 text-lg" htmlFor="email">
+                Email <span className="text-[#dc2626]">*</span>
               </label>
               <input
                 className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
-                id="username"
-                type="username"
+                id="email"
+                type="email"
+                ref={emailInputRef}
               />
             </div>
 
@@ -40,10 +87,11 @@ const LoginForm = () => {
                 className="bg-[#eeecec] border-[#e0dddd] focus:bg-silverLite focus:border-silver border outline-0 h-12 py-2 px-4 rounded-lg"
                 id="password"
                 type="password"
+                ref={passwordInputRef}
               />
             </div>
             <button className="bg-blue font-medium w-full text-white py-3 rounded-lg">
-              Log in
+              {content}
             </button>
           </form>
         </div>

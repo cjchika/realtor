@@ -35,7 +35,7 @@ const MainHeader = () => {
 
   const btnContent = isAuthenticated ? "Logout" : "Login";
   const getStartedContent = isAuthenticated
-    ? `Welcome ${truncatedString}`
+    ? `Welcome, ${truncatedString}`
     : "Get Started";
 
   const mobileMenu = (

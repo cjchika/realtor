@@ -16,7 +16,7 @@ export const firebaseAPI = createApi({
         body: credentials,
       }),
     }),
-    login: builder.mutation({
+    logIn: builder.mutation({
       query: (credentials) => ({
         url: "accounts:signInWithPassword?key=AIzaSyBbTjfZRxJ_29hJiCrMXCwMplEv5ggEoAI",
         method: "POST",
@@ -26,4 +26,4 @@ export const firebaseAPI = createApi({
   }),
 });
 
-export const { useSignupMutation } = firebaseAPI;
+export const { useSignupMutation, useLogInMutation } = firebaseAPI;

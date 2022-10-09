@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import SignupImage from "../../assets/Signup.jpg";
-// import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useSignupMutation } from "../../redux/services/firebase";
 import { login, setActiveUser } from "../../redux/features/authSlice";
 import { useDispatch } from "react-redux";
+// import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const SignupForm = () => {
   // const [show, setShow] = useState(false);
