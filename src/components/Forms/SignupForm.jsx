@@ -39,7 +39,7 @@ const SignupForm = () => {
       dispatch(login(user.idToken));
       dispatch(setActiveUser(user.email));
       history.replace("/");
-      console.log(user);
+      // console.log(user);
     } catch (error) {
       const { message } = error.data.error;
       setErrorMessage(message);

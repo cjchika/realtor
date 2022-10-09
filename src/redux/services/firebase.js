@@ -16,6 +16,13 @@ export const firebaseAPI = createApi({
         body: credentials,
       }),
     }),
+    login: builder.mutation({
+      query: (credentials) => ({
+        url: "accounts:signInWithPassword?key=AIzaSyBbTjfZRxJ_29hJiCrMXCwMplEv5ggEoAI",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
   }),
 });
 

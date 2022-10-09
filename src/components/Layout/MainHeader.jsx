@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/features/authSlice";
 import Logo from "../../assets/Logo.png";
@@ -11,9 +11,11 @@ const MainHeader = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleLogout = () => {
     dispatch(logout());
+    history.replace("/");
   };
 
   const menuHandler = () => {
@@ -29,7 +31,7 @@ const MainHeader = () => {
     }
   }
   const truncatedString = newStr.replace("@", "");
-  console.log(truncatedString);
+  // console.log(truncatedString);
 
   const btnContent = isAuthenticated ? "Logout" : "Login";
   const getStartedContent = isAuthenticated
@@ -71,7 +73,7 @@ const MainHeader = () => {
       <div className="flex justify-between py-3 pl-6">
         <button
           className="text-blue font-medium text-base pr-5"
-          onClick={menuHandler && handleLogout}
+          onClick={isAuthenticated ? handleLogout : menuHandler}
         >
           {!isAuthenticated ? <Link to="/login">{btnContent}</Link> : "Logout"}
         </button>
@@ -122,7 +124,7 @@ const MainHeader = () => {
         <div className="pl-18 hidden lg:flex ">
           <button
             className="text-blue font-medium text-base pr-5"
-            onClick={handleLogout}
+            onClick={isAuthenticated ? handleLogout : () => null}
           >
             {!isAuthenticated ? (
               <Link to="/login">{btnContent}</Link>
