@@ -8,12 +8,27 @@ import { CgClose } from "react-icons/cg";
 const MainHeader = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
 
   const menuHandler = () => {
     setIsMobileMenu((isMobileMenu) => !isMobileMenu);
   };
 
+  let newStr = "";
+
+  for (const s of user) {
+    newStr += s;
+    if (s === "@") {
+      break;
+    }
+  }
+  const truncatedString = newStr.replace("@", "");
+  console.log(truncatedString);
+
   const btnContent = isAuthenticated ? "Logout" : "Login";
+  const getStartedContent = isAuthenticated
+    ? `Welcome ${truncatedString}`
+    : "Get Started";
 
   const mobileMenu = (
     <div className="w-11/12 max-w-2xl mt-4 lg:hidden">
@@ -58,7 +73,7 @@ const MainHeader = () => {
           className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
           onClick={menuHandler}
         >
-          <Link to="/signup">Get Started</Link>
+          <Link to="/signup">{getStartedContent}</Link>
         </button>
       </div>
     </div>
@@ -100,10 +115,14 @@ const MainHeader = () => {
         </ul>
         <div className="pl-18 hidden lg:flex ">
           <button className="text-blue font-medium text-base pr-5">
-            <Link to="/login">{btnContent}</Link>
+            {!isAuthenticated ? (
+              <Link to="/login">{btnContent}</Link>
+            ) : (
+              "Logout"
+            )}
           </button>
           <button className=" bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
-            <Link to="/signup">Get Started</Link>
+            <Link to="/signup">{getStartedContent}</Link>
           </button>
         </div>
         <div className="lg:hidden">

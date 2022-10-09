@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import SignupImage from "../../assets/Signup.jpg";
 // import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useSignupMutation } from "../../redux/services/firebase";
-import { login } from "../../redux/features/authSlice";
+import { login, setActiveUser } from "../../redux/features/authSlice";
 import { useDispatch } from "react-redux";
 
 const SignupForm = () => {
@@ -32,11 +32,16 @@ const SignupForm = () => {
 
     try {
       const user = await signup(formData).unwrap();
+      if (!user) {
+        throw new Error("Authentication Failed!");
+      }
       dispatch(login(user.idToken));
+      dispatch(setActiveUser(user.email));
       history.replace("/");
       console.log(user);
     } catch (error) {
-      console.log(error.message);
+      const { message } = error.data.error;
+      console.log(message);
     }
     setIsLoading(false);
   };
