@@ -10,6 +10,7 @@ const SignupForm = () => {
   // const [show, setShow] = useState(false);
   // const handleClick = () => setShow(!show);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const history = useHistory();
@@ -41,6 +42,7 @@ const SignupForm = () => {
       console.log(user);
     } catch (error) {
       const { message } = error.data.error;
+      setErrorMessage(message);
       console.log(message);
     }
     setIsLoading(false);
@@ -53,20 +55,21 @@ const SignupForm = () => {
       <div className="font-Poppins pt-40 flex justify-center lg:justify-between px-4 md:px-16 lg:px-20">
         <div className="bg-white px-4 md:px-7 py-10 w-full lg:w-1/2 rounded-[30px] lg:rounded-[0px] lg:rounded-l-[50px] shadow-md lg:shadow">
           <div className="flex flex-col items-center pt-5">
-            <h2 className="text-xl font-medium mb-3 ">
+            <h2 className="text-xl font-medium mb-4 ">
               Create Your Free Account
             </h2>
-            <p className="text-ash mb-8 text-sm">
+            <p className="text-ash mb-12 text-sm">
               Already have an account?{" "}
               <Link to="/login">
                 <span className="text-blue">Login</span>
               </Link>
             </p>
           </div>
-          <div className=" text-black mb-10 text-sm p-4 bg-[#f7cfcf] border-[#dc2626] border rounded-lg">
-            {" "}
-            <p className="text-center text-sm">Error message</p>
-          </div>
+          {errorMessage && (
+            <div className=" text-black mb-10 text-sm p-4 bg-[#f7cfcf] border-[#dc2626] border rounded-lg">
+              <p className="text-center text-sm">{errorMessage}</p>
+            </div>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col mb-5">
               <label className="text-ash text-lg" htmlFor="email">

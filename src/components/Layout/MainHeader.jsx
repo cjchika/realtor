@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/features/authSlice";
 import Logo from "../../assets/Logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { CgClose } from "react-icons/cg";
@@ -9,6 +10,11 @@ const MainHeader = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   const menuHandler = () => {
     setIsMobileMenu((isMobileMenu) => !isMobileMenu);
@@ -65,9 +71,9 @@ const MainHeader = () => {
       <div className="flex justify-between py-3 pl-6">
         <button
           className="text-blue font-medium text-base pr-5"
-          onClick={menuHandler}
+          onClick={menuHandler && handleLogout}
         >
-          <Link to="/login">{btnContent}</Link>
+          {!isAuthenticated ? <Link to="/login">{btnContent}</Link> : "Logout"}
         </button>
         <button
           className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
@@ -114,7 +120,10 @@ const MainHeader = () => {
           </li>
         </ul>
         <div className="pl-18 hidden lg:flex ">
-          <button className="text-blue font-medium text-base pr-5">
+          <button
+            className="text-blue font-medium text-base pr-5"
+            onClick={handleLogout}
+          >
             {!isAuthenticated ? (
               <Link to="/login">{btnContent}</Link>
             ) : (
