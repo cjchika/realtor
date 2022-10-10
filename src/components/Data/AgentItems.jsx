@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { HiIdentification, HiOutlineLocationMarker } from "react-icons/hi";
 
 const AgentItems = ({ id, address, logo, name, contact }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <Fragment>
       <li className="w-auto lg:w-1/4 m-2 flex flex-col bg-white rounded-3xl  shadow-md">
@@ -20,22 +23,27 @@ const AgentItems = ({ id, address, logo, name, contact }) => {
                 <HiOutlineLocationMarker className="font-Poppins  text-blue" />
               </div>
 
-              <h1 className="font-Poppins text-xs text-black capitalize">
-                {address || "Location not found"}
+              <h1 className="font-Poppins text-sm text-black capitalize">
+                {address || "Location unavailable"}
               </h1>
             </div>
           </div>
           <div className=" px-3 mb-3">
             <div className="flex items-center ">
               <div>
-                <HiIdentification className="text-medium text-blue mr-2" />
+                <HiIdentification className="text-medium text-blue mr-1" />
               </div>
               <p className="text-[14px] text-black">{name}</p>
             </div>
           </div>
           <div className="flex items-end px-4 pb-3 mb-4">
             <div className=" bg-blue text-white font-bold text-xs px-4 py-2 rounded-lg shadow-lg">
-              {contact?.phone || contact?.mobile || "No Contact"}
+              {(isAuthenticated &&
+                (contact?.phone || contact?.mobile || "Unavailable")) || (
+                <Link to="/login">
+                  <button>Login to view contact</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

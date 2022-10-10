@@ -5,6 +5,7 @@ import { logout } from "../../redux/features/authSlice";
 import Logo from "../../assets/Logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { CgClose } from "react-icons/cg";
+import { FaUser } from "react-icons/fa";
 
 const MainHeader = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
@@ -35,7 +36,7 @@ const MainHeader = () => {
 
   const btnContent = isAuthenticated ? "Logout" : "Login";
   const getStartedContent = isAuthenticated
-    ? `Welcome, ${truncatedString}`
+    ? ` ${truncatedString}`
     : "Get Started";
 
   const mobileMenu = (
@@ -78,9 +79,13 @@ const MainHeader = () => {
           {!isAuthenticated ? <Link to="/login">{btnContent}</Link> : "Logout"}
         </button>
         <button
-          className="ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
+          className="flex ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
           onClick={menuHandler}
         >
+          {" "}
+          <div className="mr-3">
+            <FaUser />
+          </div>
           <Link to="/signup">{getStartedContent}</Link>
         </button>
       </div>
@@ -132,7 +137,10 @@ const MainHeader = () => {
               "Logout"
             )}
           </button>
-          <button className=" bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
+          <button className="flex bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
+            <div className="mr-3 ">
+              <FaUser />
+            </div>
             <Link to="/signup">{getStartedContent}</Link>
           </button>
         </div>

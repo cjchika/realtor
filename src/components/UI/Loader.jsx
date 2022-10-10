@@ -5,7 +5,7 @@ const Loader = ({ title }) => (
     <img
       src={loader}
       alt="loader"
-      className="w-52 h-52 object-contain text-blue "
+      className="w-36 h-36 object-contain text-blue "
     />
     {/* <h1 className="font-bold text-xl text-blue mt-2">
       {title || "Fetching properties..."}
