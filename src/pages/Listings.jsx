@@ -10,7 +10,7 @@ const Listings = () => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
   });
   return (
-    <div className="mt-20" ref={divRef}>
+    <div className="bg-silver pt-20" ref={divRef}>
       <PropertyListing />
       <FAQs />
       <Footer />

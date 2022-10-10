@@ -14,45 +14,6 @@ const Properties = () => {
 
   const propertiesData = data?.hits;
 
-  // const propertiesData = [
-  //   {
-  //     id: "p1",
-  //     numOfBed: 4,
-  //     numOfBath: 2,
-  //     size: 1500,
-  //     price: "100,000",
-  //     address: "2601 West 7th St. Fort Worth, Texas",
-  //     image: Property1,
-  //   },
-  //   {
-  //     id: "p2",
-  //     numOfBed: 2,
-  //     numOfBath: 2,
-  //     size: 2000,
-  //     price: "150,000",
-  //     address: "2601 West 7th St. Fort Worth, Texas",
-  //     image: Property3,
-  //   },
-  //   {
-  //     id: "p3",
-  //     numOfBed: 3,
-  //     numOfBath: 4,
-  //     size: 2500,
-  //     price: "140,000",
-  //     address: "2601 West 7th St. Fort Worth, Texas",
-  //     image: Property4,
-  //   },
-  //   {
-  //     id: "p4",
-  //     numOfBed: 4,
-  //     numOfBath: 2,
-  //     size: 1800,
-  //     price: "230,000",
-  //     address: "2601 West 7th St. Fort Worth, Texas",
-  //     image: Property5,
-  //   },
-  // ];
-
   const mappedList = propertiesData?.map((property) => {
     return (
       <PropertiesItem

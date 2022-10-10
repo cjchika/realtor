@@ -20,7 +20,14 @@ export const bayutApi = createApi({
     getProperyDetails: builder.query({
       query: (id) => `/properties/detail?externalID=${id}`,
     }),
+    getAgencyList: builder.query({
+      query: () => `/agencies/list?query=${"estate"}`,
+    }),
   }),
 });
 
-export const { useGetProperyListQuery, useGetProperyDetailsQuery } = bayutApi;
+export const {
+  useGetProperyListQuery,
+  useGetProperyDetailsQuery,
+  useGetAgencyListQuery,
+} = bayutApi;

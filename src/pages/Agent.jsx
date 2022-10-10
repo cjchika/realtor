@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import NotFound from "../components/Layout/NotFound";
+import AgentsList from "../components/Layout/AgentsList";
+import FAQs from "../components/Layout/FAQs";
+import Footer from "../components/Layout/Footer";
 
 const Agent = () => {
   const divRef = useRef();
@@ -9,9 +11,11 @@ const Agent = () => {
   });
 
   return (
-    <section ref={divRef}>
-      <NotFound />
-    </section>
+    <div className=" bg-silver pt-20" ref={divRef}>
+      <AgentsList />
+      <FAQs />
+      <Footer />
+    </div>
   );
 };
 

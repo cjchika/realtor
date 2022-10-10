@@ -11,7 +11,7 @@ const Blog = () => {
   });
 
   return (
-    <div ref={divRef} className="mt-16">
+    <div ref={divRef} className="bg-silver mt-20">
       <BlogPosts />
       <FAQs />
       <Footer />
