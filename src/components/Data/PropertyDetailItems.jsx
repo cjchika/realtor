@@ -122,8 +122,8 @@ const PropertyDetailItems = ({
 
             {isAuthenticated && (
               <div className="flex flex-wrap items-center justify-between mb-10 bg-silver md:px-10 lg:px-20">
-                <div className="w-full md:w-[40%] flex justify-center ">
-                  <div className="py-10 ">
+                <div className="w-full md:w-[40%] flex justify-center py-10">
+                  <div className="p-3 bg-white rounded-full">
                     <img
                       src={logo || defaultLogo}
                       alt="real-estate"
@@ -133,22 +133,24 @@ const PropertyDetailItems = ({
                 </div>
                 <div className="font-Poppins flex flex-col text-blue w-full md:w-[60%] px-6 pb-10 md:p-0">
                   <div>
-                    <h4 className="text-lg md:text-xl mb-4">
-                      <span className="font-medium mr-4">Agency:</span>{" "}
+                    <h4 className="text-base md:text-xl mb-4">
+                      <span className="font-semibold mr-4">Agency:</span>{" "}
                       {agencyName}
                     </h4>
                   </div>
                   <div>
-                    <h4 className="text-lg md:text-xl mb-4">
-                      <span className="font-medium mr-4">Contact:</span>
+                    <h4 className="text-base md:text-xl mb-4">
+                      <span className="font-semibold mr-4">Contact:</span>
                       {phoneNumber?.phone ||
                         phoneNumber?.mobile ||
                         "Unavailable"}
                     </h4>
                   </div>
                   <div>
-                    <h4 className="text-lg md:text-xl mb-4">
-                      <span className="font-medium mr-4">Contact Person: </span>{" "}
+                    <h4 className="text-base md:text-xl mb-4">
+                      <span className="font-semibold mr-4">
+                        Contact Person:{" "}
+                      </span>{" "}
                       {contactName}
                     </h4>
                   </div>

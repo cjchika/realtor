@@ -1,84 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { useHistory } from "react-router-dom";
 
 const HeroForm = () => {
+  const phraseInputRef = useRef();
+  const history = useHistory();
+
   const handleSearch = (event) => {
     event.preventDefault();
+
+    const enteredPhrase = phraseInputRef.current.value;
+
+    history.replace(`/search`);
   };
 
   return (
-    <div className=" mx-auto w-11/12 md:w-9/12 lg:w-6/12 mt-20 rounded-lg bg-white shadow-md p-6 px-4 ">
-      <h1 className="mb-3 pl-4 md:pl-0 text-ash font-Poppins font-medium tracking-wider text-lg">
+    <div className=" mx-auto w-11/12 md:w-9/12 lg:w-6/12 mt-20 rounded-lg bg-silverLite shadow-md p-6 px-4 ">
+      <h1 className="mb-3 pl-4 md:pl-0 text-blue font-Poppins font-medium tracking-wider text-base md:text-lg">
         Search for available properties
       </h1>
-      <form onSubmit={handleSearch}>
-        <div className="flex flex-col px-4 md:px-0 md:flex-row justify-between">
-          <div className="flex flex-col pb-2 md:pb-0">
-            <label
-              htmlFor="location"
-              className=" font-Poppins text-blue font-xs lg:font-medium"
-            >
-              Location
-            </label>
-            <select
-              id="location"
-              name="location"
-              className="text-sm bg-transparent text-ash outline-0"
-            >
-              <option>Texas</option>
-              <option>Berlin</option>
-              <option>Dubai</option>
-              <option>Lagos</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col pb-2 md:pb-0">
-            <label
-              htmlFor="property"
-              className="font-Poppins text-blue font-xs lg:font-medium"
-            >
-              Property Type
-            </label>
-            <select
-              id="property"
-              name="property"
-              className="text-sm bg-transparent text-ash outline-0"
-            >
-              <option>Duplex</option>
-              <option>Bungalow</option>
-              <option>Terrace</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col pb-2 md:pb-0">
-            <label
-              htmlFor="price"
-              className="font-Poppins text-blue font-xs lg:font-medium"
-            >
-              Max Price
-            </label>
-            <select
-              id="price"
-              name="price"
-              className="text-sm bg-transparent text-ash outline-0"
-            >
-              <option>$100,000</option>
-              <option>$200,000</option>
-              <option>$300,000</option>
-            </select>
-          </div>
-          <div className="flex justify-end pt-4 md:pt-0">
-            <button
-              type="submit"
-              className="flex items-center bg-blue text-white font-semibold text-md p-2 px-4 rounded-lg  shadow-md "
-            >
-              {" "}
-              <BiSearchAlt className="mr-2" />
-              Search
-            </button>
-          </div>
-        </div>
-      </form>
+      <div className=" flex items-center justify-center my-2 ">
+        <form onSubmit={handleSearch} className="flex  items-center w-full">
+          <label htmlFor="text"></label>
+          <input
+            placeholder="Enter city, e.g dubai"
+            type="text"
+            className="p-3 px-4 outline-none rounded-l-lg w-full  border-2 border-blue border-r-0"
+            ref={phraseInputRef}
+          />
+          <button className="bg-blue p-4 rounded-r-lg border-2 border-blue ">
+            <BiSearchAlt className="text-white font-bold" />
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

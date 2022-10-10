@@ -1,31 +1,31 @@
 import React, { Fragment, useRef, useState } from "react";
-import AgentItems from "../Data/AgentItems";
+// import AgentItems from "../Data/AgentItems";
 import { BiSearchAlt } from "react-icons/bi";
 
-import { useGetAgencyListQuery } from "../../redux/services/bayut";
-import Loader from "../UI/Loader";
-import Error from "../UI/Error";
+// import { useGetAgencyListQuery } from "../../redux/services/bayut";
+// import Loader from "../UI/Loader";
+// import Error from "../UI/Error";
 
-const AgentsList = () => {
+const SearchList = ({ onEntered }) => {
   const phraseInputRef = useRef();
-  const [enteredPhrase, setEnteredPhrase] = useState("estate");
-  const { data, isFetching, error } = useGetAgencyListQuery(enteredPhrase);
+  // const [enteredPhrase, setEnteredPhrase] = useState("estate");
+  // const { data, isFetching, error } = useGetAgencyListQuery(enteredPhrase);
 
-  const agencyData = data?.hits;
-  console.log(agencyData);
+  // const agencyData = data?.hits;
+  // console.log("SearchList", onEntered);
 
-  const mappedList = agencyData?.map((agent) => {
-    return (
-      <AgentItems
-        key={agent?.externalID}
-        id={agent?.externalID}
-        address={agent?.location}
-        logo={agent?.logo?.url}
-        contact={agent?.phoneNumber}
-        name={agent?.name}
-      />
-    );
-  });
+  // const mappedList = agencyData?.map((agent) => {
+  //   return (
+  //     <AgentItems
+  //       key={agent?.externalID}
+  //       id={agent?.externalID}
+  //       address={agent?.location}
+  //       logo={agent?.logo?.url}
+  //       contact={agent?.phoneNumber}
+  //       name={agent?.name}
+  //     />
+  //   );
+  // });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,7 +36,7 @@ const AgentsList = () => {
       return;
     }
 
-    setEnteredPhrase(enteredText);
+    // setEnteredPhrase(enteredText);
   };
 
   return (
@@ -44,14 +44,14 @@ const AgentsList = () => {
       <section className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16">
         <div className="px-auto lg:px-32">
           <h1 className="font-Poppins font-bold text-4xl text-center tracking-wider mb-5">
-            List of verified <span className="text-blue">Agencies</span>
+            Search <span className="text-blue">Properties</span>
           </h1>
         </div>
         <div className=" flex items-center justify-center my-10 ">
           <form onSubmit={handleSubmit} className="flex  items-center">
             <label htmlFor="text"></label>
             <input
-              placeholder="Enter keyword, e.g rental"
+              placeholder="Enter city, e.g dubai"
               type="text"
               className="p-3 px-4 outline-none rounded-l-xl w-[14rem] sm:w-auto "
               ref={phraseInputRef}
@@ -62,16 +62,16 @@ const AgentsList = () => {
           </form>
         </div>
 
-        <div>
+        {/* <div>
           <ul className="flex justify-center flex-col lg:flex-row lg:flex-wrap ">
             {isFetching && <Loader />}
             {!isFetching && !error && mappedList}
             {!isFetching && mappedList.length === 0 && <Error />}
           </ul>
-        </div>
+        </div> */}
       </section>
     </Fragment>
   );
 };
 
-export default AgentsList;
+export default SearchList;
