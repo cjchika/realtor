@@ -14,13 +14,14 @@ const MainHeader = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleLogout = () => {
-    dispatch(logout());
-    history.replace("/");
-  };
-
   const menuHandler = () => {
     setIsMobileMenu((isMobileMenu) => !isMobileMenu);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    menuHandler();
+    history.replace("/");
   };
 
   let newStr = "";
@@ -79,13 +80,15 @@ const MainHeader = () => {
           {!isAuthenticated ? <Link to="/login">{btnContent}</Link> : "Logout"}
         </button>
         <button
-          className="flex ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
+          className="flex items-center ml-6 bg-blue text-white font-bold text-xs p-3 px-3 rounded-lg shadow-md "
           onClick={menuHandler}
         >
           {" "}
-          <div className="mr-3">
-            <FaUser />
-          </div>
+          {isAuthenticated && (
+            <div className="mr-3">
+              <FaUser />
+            </div>
+          )}
           <Link to="/signup">{getStartedContent}</Link>
         </button>
       </div>
@@ -137,10 +140,12 @@ const MainHeader = () => {
               "Logout"
             )}
           </button>
-          <button className="flex bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
-            <div className="mr-3 ">
-              <FaUser />
-            </div>
+          <button className="flex items-center bg-blue text-white border-2 border-blue font-bold text-xs py-2 px-4 hover:text-blue hover:bg-white  hover:outline-blue rounded-lg shadow-md ">
+            {isAuthenticated && (
+              <div className="mr-3 ">
+                <FaUser />
+              </div>
+            )}
             <Link to="/signup">{getStartedContent}</Link>
           </button>
         </div>

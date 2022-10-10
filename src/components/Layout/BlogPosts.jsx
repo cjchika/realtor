@@ -25,13 +25,13 @@ const BlogPosts = () => {
   return (
     <Fragment>
       <section className="mx-auto bg-silver px-10 md:px-16 lg:px-20 py-20 pt-20 md:py-16">
-        <div className="flex flex-col md:flex-row justify-between px-auto">
-          <div>
-            <h1 className="font-Poppins font-bold text-2xl text-left mb-3">
+        <div className="flex flex-col md:flex-row justify-center px-auto">
+          <div className="mb-8">
+            <h1 className="font-Poppins font-bold text-4xl text-center mb-3">
               Latest Information From Our{" "}
               <span className="text-blue">Blog</span>
             </h1>
-            <p className="text-left text-ash">
+            <p className="text-center text-ash text-base">
               Stay up to date with all the information about our listed
               properties.
             </p>

@@ -42,6 +42,10 @@ const ListingDetail = () => {
               description={data?.description}
               amenities={data?.amenities}
               photos={data?.photos}
+              phoneNumber={data?.phoneNumber}
+              agencyName={data?.agency?.name}
+              contactName={data?.contactName}
+              logo={data?.agency?.logo?.url}
             />
           )}
           {isFetching && <Loader />}
