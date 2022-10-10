@@ -1,9 +1,13 @@
 import React, { Fragment, useState } from "react";
 
+import { useSelector } from "react-redux";
+
 import { RiHotelBedFill } from "react-icons/ri";
 import { FaBath } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import defaultLogo from "../../assets/Blog1.jpg";
+import { Link } from "react-router-dom";
 
 const PropertyDetailItems = ({
   id,
@@ -18,11 +22,16 @@ const PropertyDetailItems = ({
   description,
   amenities,
   photos,
+  phoneNumber,
+  agencyName,
+  contactName,
+  logo,
 }) => {
   const shortSize = size.toFixed(3);
   const photo = photos?.map((image) => image);
-
   const [chosenPhoto, setChosenPhoto] = useState(photo[0].url);
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   return (
     <Fragment>
@@ -101,6 +110,65 @@ const PropertyDetailItems = ({
               </span>
             </h1>
           </div>
+
+          <div>
+            <div className="flex justify-center items-center mb-10">
+              <hr className="w-20 md:w-30 lg:w-52 text-[#ebebeb]" />
+              <h1 className="font-Poppins uppercase font-bold  text-xl text-blue mx-0 md:mx-10 text-center">
+                Broker's Details
+              </h1>
+              <hr className="w-20 md:w-30 lg:w-52 text-[#ebebeb]" />
+            </div>
+
+            {isAuthenticated && (
+              <div className="flex flex-wrap items-center justify-between mb-10 bg-silver md:px-10 lg:px-20">
+                <div className="w-full md:w-[40%] flex justify-center ">
+                  <div className="py-10 ">
+                    <img
+                      src={logo || defaultLogo}
+                      alt="real-estate"
+                      className="w-40 h-40 rounded-full object-cover "
+                    />
+                  </div>
+                </div>
+                <div className="font-Poppins flex flex-col text-blue w-full md:w-[60%] px-6 pb-10 md:p-0">
+                  <div>
+                    <h4 className="text-lg md:text-xl mb-4">
+                      <span className="font-medium mr-4">Agency:</span>{" "}
+                      {agencyName}
+                    </h4>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl mb-4">
+                      <span className="font-medium mr-4">Contact:</span>
+                      {phoneNumber?.phone ||
+                        phoneNumber?.mobile ||
+                        "Unavailable"}
+                    </h4>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl mb-4">
+                      <span className="font-medium mr-4">Contact Person: </span>{" "}
+                      {contactName}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            )}
+            {!isAuthenticated && (
+              <div className="bg-silver mb-10 text-blue font-medium">
+                <h4 className="text-center py-10 font-Poppins">
+                  <Link to="/login">
+                    <button className="bg-blue text-white py-1 px-3 rounded-lg shadow-lg">
+                      Login
+                    </button>
+                  </Link>{" "}
+                  to view broker's details
+                </h4>
+              </div>
+            )}
+          </div>
+
           <div className="mx-8 mb-6 overflow-hidden">
             <div className="flex justify-center items-center mb-4">
               <hr className="w-20 md:w-30 lg:w-52 text-[#ebebeb]" />
