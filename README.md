@@ -31,7 +31,7 @@ https://user-images.githubusercontent.com/74545192/195051897-365da939-a071-450c-
 
 ### Macho Realtor is hosted on Netlify
 
-### [Live View](https://www.macho-realtor.netlify.app) 
+### [Live View](https://macho-realtor.netlify.app/home) 
 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8c2d58f9-aa02-4e52-99c5-9658f5946663/deploy-status)](https://app.netlify.com/sites/macho-realtor/deploys)
