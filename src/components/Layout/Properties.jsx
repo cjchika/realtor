@@ -44,7 +44,7 @@ const Properties = () => {
         <ul className="flex justify-center flex-col lg:flex-row lg:justify-between ">
           {isFetching && <Loader />}
           {!isFetching && !error && mappedList}
-          {!isFetching && mappedList.length === 0 && <Error />}
+          {!isFetching && mappedList?.length === 0 && <Error />}
         </ul>
         <div className="flex items-center  justify-center px-4 pb-3 pt-5">
           <Link to="/listings">

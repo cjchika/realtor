@@ -1,9 +1,5 @@
 import React, { Fragment } from "react";
 import PropertiesItem from "../Data/PropertiesItem";
-// import Property1 from "../../assets/Property1.jpg";
-// import Property3 from "../../assets/Property3.jpg";
-// import Property4 from "../../assets/Property4.jpg";
-// import Property5 from "../../assets/Property5.jpg";
 
 import { useGetProperyListQuery } from "../../redux/services/bayut";
 import Loader from "../UI/Loader";
@@ -43,7 +39,7 @@ const Properties = () => {
           <ul className="flex justify-center flex-col lg:flex-row lg:flex-wrap ">
             {isFetching && <Loader />}
             {!isFetching && !error && mappedList}
-            {!isFetching && mappedList.length === 0 && <Error />}
+            {!isFetching && mappedList?.length === 0 && <Error />}
           </ul>
         </div>
       </section>

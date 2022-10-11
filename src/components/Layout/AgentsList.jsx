@@ -66,7 +66,7 @@ const AgentsList = () => {
           <ul className="flex justify-center flex-col lg:flex-row lg:flex-wrap ">
             {isFetching && <Loader />}
             {!isFetching && !error && mappedList}
-            {!isFetching && mappedList.length === 0 && <Error />}
+            {!isFetching && mappedList?.length === 0 && <Error />}
           </ul>
         </div>
       </section>

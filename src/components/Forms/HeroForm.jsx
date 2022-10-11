@@ -11,7 +11,11 @@ const HeroForm = () => {
 
     const enteredPhrase = phraseInputRef.current.value;
 
-    history.replace(`/search`);
+    if (enteredPhrase.trim().length <= 2) {
+      return;
+    }
+
+    history.replace(`/listings`);
   };
 
   return (
@@ -25,7 +29,7 @@ const HeroForm = () => {
           <input
             placeholder="Enter city, e.g dubai"
             type="text"
-            className="p-3 px-4 outline-none rounded-l-lg w-full  border-2 border-blue border-r-0"
+            className="p-3 px-4 outline-none rounded-l-lg w-full  border-2 border-blue border-r-0 bg-silver"
             ref={phraseInputRef}
           />
           <button className="bg-blue p-4 rounded-r-lg border-2 border-blue ">

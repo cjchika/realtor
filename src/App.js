@@ -9,7 +9,6 @@ import NotFound from "./pages/NotFound";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Agent from "./pages/Agent";
-import Search from "./pages/Search";
 import Layout from "./components/Layout/Layout";
 
 function App() {
@@ -29,9 +28,6 @@ function App() {
         </Route>
         <Route path="/listings/:listingId">
           <ListingDetail />
-        </Route>
-        <Route path="/search">
-          <Search />
         </Route>
         <Route path="/agent">
           <Agent />
