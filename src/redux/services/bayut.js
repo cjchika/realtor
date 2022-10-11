@@ -7,7 +7,8 @@ export const bayutApi = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "b0834bc328msh0d81b6138d53f5ep1bdadejsn4c1a3d09b114"
+        "bd9812d039mshaf648f73f6fe561p1d9206jsnc85ea1d15d4e"
+        //Old key "b0834bc328msh0d81b6138d53f5ep1bdadejsn4c1a3d09b114"
       );
       return headers;
     },
