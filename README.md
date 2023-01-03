@@ -2,7 +2,7 @@ https://user-images.githubusercontent.com/74545192/195051897-365da939-a071-450c-
 
 ## Macho Realtor
 
-### Real Estate app that populates data from an API endpoints, Bayut API, fetches the real estate UAE data, and NewscatcherAPI for real time news headlines across the world,  I made use of Redux Toolkit's RTK Query to communicate with the multiple endpoints and some sort of state management, and Firebase Auth REST API for authentication.
+### Real Estate app that populates data from an API endpoints, Bayut API, fetches the real estate UAE data, and NewscatcherAPI for real time news headlines across the world,  Redux Toolkit's RTK Query was used to communicate to the multiple endpoints and state management, I made used of Firebase Auth REST API for authentication.
 
 ### Features
 * Landing Page
