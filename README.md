@@ -15,7 +15,6 @@ https://user-images.githubusercontent.com/74545192/195051897-365da939-a071-450c-
 * Search
 * Highly responsive and aesthetic design
 * FAQs
-* Customer's Review etc
 
 ### Dependencies/Tools
 * React
