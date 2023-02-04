@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/74545192/195051897-365da939-a071-450c-
 * Blog Page
 * Signup and Login Pages
 * User Authentication
-* Search
+* Search Query
 * Highly responsive and aesthetic design
 * FAQs
 
